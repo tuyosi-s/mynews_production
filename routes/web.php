@@ -19,15 +19,18 @@ Route::get('/', function () {
     
 use App\Http\Controllers\Admin\NewsController;
 
-//No19-4課題実施の為、use文１行とグループに２行を追加。
-use App\Http\Controllers\Admin\ProfileController;
-
 Route::controller(NewsController::class)->prefix('admin')->group(function(){
     Route::get('news/create','add');
-    Route::get('Profile/create','ProfileController@add');
-    Route::get('Profile/edit','ProfileController@edit');
+});
+   
+// ブーストコース　ベーシックタームNo19-4課題実施。
+use App\Http\Controllers\Admin\ProfileController;
+
+Route::controller(ProfileController::class)->prefix('admin')->group(function(){ 
+    Route::get('profile/create','add');
+    Route::get('profile/edit','edit');
 
 });
 
 //No19-3課題実施
-Route::get('XXX','AAAController@bbb');
+//Route::get('XXX','AAAController@bbb');
