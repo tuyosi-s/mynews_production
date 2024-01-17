@@ -18,6 +18,7 @@ class ProfileController extends Controller
     }    
     public function edit()
     {
+        //dd('editが実行された');
         return view('admin/profile/edit');
     }
     public function update()
