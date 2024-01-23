@@ -34,3 +34,6 @@ Route::controller(ProfileController::class)->prefix('admin')->group(function(){
 
 //No19-3課題実施
 //Route::get('XXX','AAAController@bbb');
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
