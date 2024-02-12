@@ -31,11 +31,16 @@ class ProfileController extends Controller
         
         return redirect('admin/profile/create');
     }    
-    public function edit()
+    public function edit(Request $request)
     {
         //dd('editが実行された');
-        return view('admin/profile/edit');
+        $profiles = Profile::find($request->id);
+        if(empty($profiles)){
+            abort(404);
+        }
+        return view('admin/profile/edit',['profiles_form' => $profiles]);
     }
+
     public function update()
     {
         return redirect('admin/profile/edit');
