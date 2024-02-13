@@ -22,14 +22,14 @@
                      
                       <form action="{{route('admin.profile.create')}}" method="post" enctype="multipart/form-data">
                         <div class="form-group row">
-                          <label class="col-md-2">氏名</label>
+                             <label class="col-md-2">氏名</label>
                              <div class="col-md-10">
                                <input type="text" class="form-control" name="name" value="{{ old('name')}}">
                              </div>
                         </div>
                      
                         <div class="form-group row">
-                          <label class="col-md-2">性別</label>
+                             <label class="col-md-2">性別</label>
                              <div class="col-md-10">
                                <lavel>男</lavel>
                                <input type="radio" name="gender" >
@@ -39,20 +39,21 @@
                         </div>
                         
                         <div class="form-group row">
-                          <label class="col-md-2">趣味</label>
+                             <label class="col-md-2">趣味</label>
                              <div class="col-md-10">
                                <input type="text" class="form-control" name="hobby" value="{{ old('hobby')}}">
                              </div>
                         </div>
                      
                         <div class="form-group row">
-                          <label class="col-md-2">自己紹介欄</label>
+                             <label class="col-md-2">自己紹介欄</label>
                              <div>
                                <textarea class="form-contontrol" name="introduction" cols="50" rows="15">{{old ('introduction')}}</textarea>
                              </div>
                         </div>
                          @csrf
                               <input type="submit" class="btn btn-primary" value="更新">
+                      </form>
                   </div>
               </div>
           </div>

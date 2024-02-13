@@ -1,10 +1,11 @@
-@extends('layouts.admin')
-@section('title','登録済ニュースの一覧')
+@extends('layouts.profile')
+
+@section('title','プロフィール')
 
 @section('content')
  <div class="container">
    <div class="row">
-       <h2>ニュース一覧</h2>
+       <h2>プロフィール一覧</h2>
    </div>
    <div class="row">
       <div class="col-md-4"> 
@@ -14,9 +15,9 @@
       <div class="col-md-8">
          <form action="{{route('admin.news.index')}}" method="get">
              <div class="form-group row">
-                <lavel class="col-md-2">タイトル</lavel>
+                <lavel class="col-md-2">プロフィール一覧</lavel>
                 <div class="col-md-8">
-                   <input type="text" class="form-control" name="cond_title" value="{{$cond_title}}">
+                   <input type="text" class="form-control" name="cond_name" value="{{$cond_name}}">
                 </div>
                 <div class="col-md-2">
                    @csrf
@@ -33,23 +34,27 @@
                <thead>
                   <tr>
                      <th width="10%">ID</th>
-                     <th width="20%">タイトル<th>
-                     <th width="50%">本文</th>
-                     <th width="10%">操作</th>
+                     <th width="20%">氏名<th>
+                     <th width="10%">性別</th>
+                     <th width="20%">趣味</th>
+                     <th width="40%">自己紹介</th>
                   </tr>
                </thead>
                <tbody>
-                            @foreach($posts as $news)
+                            @foreach($posts as $profile)
                                 <tr>
-                                    <th>{{ $news->id }}</th>
-                                    <td>{{ Str::limit($news->title, 100) }}</td>
-                                    <td>{{ Str::limit($news->body, 250) }}</td>
+                                    <th>{{ $profile->id }}</th>
+                                    <td>{{ Str::limit($profile->name, 100) }}</td>
+                                    <td>{{ Str::limit($profile->gender, 10) }}</td>
+                                    <td>{{ Str::limit($profile->hobby, 200) }}</td>
+                                    <td>{{ Str::limit($profile->introduction, 200) }}</td>
+                                    
                                     <td>
                                         <div>
-                                            <a href="{{ route('admin.news.edit', ['id' => $news->id]) }}">編集</a>
+                                            <a href="{{ route('admin.profile.edit', ['id' => $profile->id]) }}">編集</a>
                                         </div>
                                         <div>
-                                            <a href="{{ route('admin.news.delete', ['id' => $news->id]) }}">削除</a>
+                                            <a href="{{ route('admin.profile.delete', ['id' => $profile->id]) }}">削除</a>
                                         </div>
                                     </td>
                                 </tr>
@@ -61,5 +66,3 @@
    </div>            
  </div>
 @endsection
-               
-               

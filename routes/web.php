@@ -25,7 +25,7 @@ Route::controller(NewsController::class)->prefix('admin')->name('admin.')->middl
     Route::get('news','index')->name('news.index');
     Route::get('news/edit','edit')->name('news.edit');
     Route::post('news/edit','update')->name('news.update');
-    Route::get('news/delate','delate')->name('news.delate');
+    Route::get('news/delete','delete')->name('news.delete');
 });
    
 // ブーストコース　ベーシックタームNo19-4課題実施。
@@ -35,7 +35,9 @@ Route::controller(ProfileController::class)->prefix('admin')->name('admin.')->gr
     Route::get('profile/create','add')->middleware('auth');
     Route::post('profile/create','create')->name('profile.create');
     Route::get('profile/edit','edit')->middleware('auth')->name('profile.edit');
+    Route::get('profile','index')->name('profile.index');
     Route::post('profile/edit','update')->name('profile.update');
+    Route::get('profile/delete','delete')->name('profile.delete');
 });
 
 //No19-3課題実施
