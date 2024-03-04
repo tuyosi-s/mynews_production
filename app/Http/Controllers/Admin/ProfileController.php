@@ -22,7 +22,7 @@ class ProfileController extends Controller
         //Validationを行う。
         $this->validate($request,Profile::$rules); 
         
-        $profile = new profile;
+        $profile = new Profile;
         $form = $request->all();
         
     //フォームから送信されてきたtokenを削除

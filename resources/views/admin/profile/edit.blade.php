@@ -26,9 +26,9 @@
                           <label class="col-md-2" for="gender">性別</label>
                           <div class="col-md-10">
                                <label>男</label>
-                               <input type="radio" name="gender" value="{{ $profile_form->gender }}">
+                               <input type="radio" name="gender" value="男">
                                <label>女</label>
-                               <input type="radio" name="gender" value="{{ $profile_form->gender }}">
+                               <input type="radio" name="gender" value="女">
                           </div>
                     </div>
                     

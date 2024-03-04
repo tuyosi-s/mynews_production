@@ -7,13 +7,10 @@ use Illuminate\Http\Request;
 
 //以下の１行をつけ足すことでNews Modelが扱えるようになる
 use App\Models\News;
-
-//下記１行をを追記しHistory Modelの使用を宣言。
+// History Modelを使うため、以下を追記
 use App\Models\History;
-
-//Carbon()を使えるようにする為、以下を追記。
+//Carbonを使うため、以下を追記
 use Carbon\Carbon;
-
 
 class NewsController extends Controller
 {
@@ -85,36 +82,34 @@ class NewsController extends Controller
     public function update(Request $request)
     {
          //Validationをかける
-         $this->validate($request,News::$rules);
+         $this->validate($request,News::$reles);
          //News　Model　からデータを取得する
          $news = News::find($request->id);
          //送信さてきたフォームデータを変数$news_form格納する
          $news_form = $request->all();
          
          
-          if ($request->remove == 'true') {
-            $news_form['image_path'] = null;
-        } elseif ($request->file('image')) {
-            $path = $request->file('image')->store('public/image');
-            $news_form['image_path'] = basename($path);
-        } else {
-            $news_form['image_path'] = $news->image_path;
-        }
-
+         if($request->remove =='true'){
+             $news_form['image_path'] = null;
+         }elseif ($request->file('image')){
+             $path = $request->file('image')->store('public/image');
+             $news_form['image_path'] = basename($path);
+         }else{
+             $news_form['image_path'] = $news->image_path;
+         }
          //$form変数で不必要な連想配列（'image','remove','_token' を削除する
          unset($news_form['image']);
          unset($news_form['remove']);
          unset($news_form['_token']);
-        
-         //fillメソッドで配列されたデータを各カラムに入れてsaveメソッドで保存。
+         //fillメソッドで配列されたデータをfillメソッドで各カラムに入れて、saveメソッドで保存
          $news->fill($news_form)->save();
-         
-         //History ModelのHistoryクラスをインスタンス化。
-         $history = new History();
-         $history->news_id = $news->id;
-         $history->edited_at = Carbon::now();
-         $history->save();
-         
+        
+        // 以下を追記
+        $history = new History();
+        $history->news_id = $news->id;
+        $history->edited_at = Carbon::now();
+        $history->save();
+        
          return redirect('admin/news');
     }
     
@@ -128,5 +123,6 @@ class NewsController extends Controller
         return redirect('admin/news/');
 
     }
+    
     
 }

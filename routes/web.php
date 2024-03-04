@@ -40,8 +40,20 @@ Route::controller(ProfileController::class)->prefix('admin')->name('admin.')->gr
     Route::get('profile/delete','delete')->name('profile.delete');
 });
 
+use App\Http\Controllers\NewsController as PublicNewsController;
+
+Route::get('/',[PublicNewsController::class,'index'])->name('news.index');
+
+
+use App\Http\Controllers\ProfileController as PublicProfileController;
+Route::get('/profile', [PublicProfileController::class, 'index'])->name('profile.index');
+
+
+
 //No19-3課題実施
 //Route::get('XXX','AAAController@bbb');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
