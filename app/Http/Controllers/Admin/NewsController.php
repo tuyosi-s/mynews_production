@@ -82,7 +82,7 @@ class NewsController extends Controller
     public function update(Request $request)
     {
          //Validationをかける
-         $this->validate($request,News::$reles);
+         $this->validate($request,News::$rules);
          //News　Model　からデータを取得する
          $news = News::find($request->id);
          //送信さてきたフォームデータを変数$news_form格納する

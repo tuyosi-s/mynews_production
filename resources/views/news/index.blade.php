@@ -2,6 +2,12 @@
 
 @section('content')
     <div class="container">
+      <div class="row">
+        <h2 class="p-4">PHP勉強の為に作ったページです。</h2>
+      </div>
+    </div>
+    
+    <div class="container">
         <hr color="#c0c0c0">
         @if (!is_null($headline))
             <div class="row">

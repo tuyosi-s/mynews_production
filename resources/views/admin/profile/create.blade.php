@@ -32,9 +32,9 @@
                              <label class="col-md-2">性別</label>
                              <div class="col-md-10">
                                <lavel>男</lavel>
-                               <input type="radio" name="gender" value="男">
+                               <input type="radio" name="gender" value="男"{{ old('gender') === '男' ? 'checked' : '' }}>
                                <lavel>女</lavel>
-                               <input type="radio" name="gender" value="女">
+                               <input type="radio" name="gender" value="女"{{ old('gender') === '女' ? 'checked' : '' }}>
                              </div>
                         </div>
                         
