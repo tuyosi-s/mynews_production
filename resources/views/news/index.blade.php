@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
       <div class="row">
-        <h2 class="p-4">PHP勉強の為に作ったページです。</h2>
+        <h2 class="p-4">PHP勉強の為に作ったページです。(課題の為に編集・更新を行っています。)</h2>
       </div>
     </div>
     
